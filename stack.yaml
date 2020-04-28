@@ -1,0 +1,7 @@
+resolver: lts-15.10
+packages:
+- .
+extra-deps:
+- iCalendar-0.4.0.5@sha256:2a3dca74955de4d3548e4592201093b59328ca153ad207bad189e73cc04f4be0,1962
+- mime-0.4.0.2@sha256:208947d9d1a19d08850be67ecb28c6e776db697f3bba05bd9d682e51a59f241f,983
+allow-newer: yes

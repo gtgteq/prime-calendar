@@ -1,0 +1,40 @@
+# .github/workflows/build-deploy.yml
+
+name: Build and deploy to GitHub Pages
+on: push
+
+jobs:
+  build-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: mstksg/setup-stack@v1
+    - uses: actions/cache@v1
+      name: Cache ~/.stack
+      with:
+        path: ~/.stack
+        key: ${{ runner.os }}-stack-${{ hashFiles('stack.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-stack-
+    - uses: actions/cache@v1
+      name: Cache .stack-work
+      with:
+        path: .stack-work
+        key: ${{ runner.os }}-stack-work-${{ hashFiles('stack.yaml') }}-${{ '**/*.hs' }}
+        restore-keys: |
+          ${{ runner.os }}-stack-work-
+    - name: Compile with Stack
+      run: stack build
+    - run: mkdir output
+    - name: Run and output
+      run: |
+        stack run -- term 2020 > output/prime-calendar-2020.ical
+    - name: 'Run peaceiris/actions-gh-pages@v2.5.0: deploy to github pages'
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: output
+        EXTERNAL_REPOSITORY: gtgteq/prime-calendar
+      if: github.ref == 'refs/heads/master'

@@ -1,0 +1,58 @@
+name:                prime-calendar
+version:             0.1.0.0
+github:              "gtgteq/prime-calendar"
+license:             BSD3
+author:              "gtgteq"
+maintainer:          "gtgteq.operator@gmail.com"
+copyright:           "2020 gtgteq"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Export prime days to iCalendar file
+category:            Text
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/gtgteq/prime-calendar#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- iCalendar
+- bytestring
+- containers
+- data-default
+- text
+- time
+- uuid
+
+library:
+  source-dirs: src
+
+executables:
+  prime-calendar:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - arithmoi
+    - optparse-generic
+    - prime-calendar
+
+tests:
+  prime-calendar-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hspec
+    - prime-calendar
