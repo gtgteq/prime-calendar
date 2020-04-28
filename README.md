@@ -3,6 +3,7 @@
 Export [iCalendar](https://tools.ietf.org/html/rfc5545) file contains only prime days, like 20200109, 20200111, etc.
 
 We deploy ical file to <https://gtgteq.github.io/prime-calendar/prime-calendar.ical>.
+If you want to import prime days, you should tell this URL to services or apps.
 
 We use [arithmoi](https://hackage.haskell.org/package/arithmoi)'s `isPrime` function for prime testing.
 
