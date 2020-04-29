@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 51952a75bb9395d98741edba63d31f22914ec5057821642e13130179718fef01
+-- hash: 69402ff23f92cc9c488c194cdfabe60d0267459f7813b1d7d4a269c88f9e90c7
 
 name:           prime-calendar
-version:        0.1.0.0
+version:        0.1.1.0
 synopsis:       Export prime days to iCalendar file
 description:    Please see the README on GitHub at <https://github.com/gtgteq/prime-calendar#readme>
 category:       Text
